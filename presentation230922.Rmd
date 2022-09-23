@@ -230,3 +230,19 @@ animation <- ggplot(sets_per_theme_per_year,aes(name,count, fill=name)) +
 animate(animation, fps = 4)
 ```
 
+## Forecast
+```{r, echo=FALSE}
+sets_per_theme_per_year_19_21 <- sets_per_theme_per_year %>%
+    filter(year == 2019 | year == 2020 | year == 2021) %>%
+  group_by(name)
+ggplot(data = sets_per_theme_per_year_19_21, aes(x = year, y = count, color = name))+
+    theme_classic(14)+
+    geom_line()+
+    labs(title = "What to buy for Christmas?",
+         x = "Year",
+         y = "New sets")+
+    scale_color_viridis_d(option = "turbo")+
+    scale_x_continuous(n.breaks = 3) +
+    th
+```
+
